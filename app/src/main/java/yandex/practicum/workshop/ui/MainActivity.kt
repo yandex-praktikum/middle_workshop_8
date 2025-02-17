@@ -6,7 +6,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -40,15 +42,25 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun AppNavHost() {
     val navController = rememberNavController()
+    val coroutineScope = rememberCoroutineScope()
 
     NavHost(navController = navController, startDestination = Destinations.List.name) {
         composable(Destinations.Profile.name) {
-            Screen("Профиль") {
+            Screen("Профиль",
+                navIcon = {
+                    IconButton(onClick = {
+                        coroutineScope.launch {
+                            navController.navigate(Destinations.List.name)
+                        }
+                    }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "")
+                    }
+                }
+            ) {
                 ProfileScreen()
             }
         }
         composable(Destinations.List.name) {
-            val coroutineScope = rememberCoroutineScope()
             Screen(
                 "Элементы",
                 actions = {
@@ -73,6 +85,7 @@ private fun AppNavHost() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 private fun Screen(
     title: String,
+    navIcon: @Composable () -> Unit = {},
     actions: @Composable () -> Unit = {},
     content: @Composable () -> Unit
 ) {
@@ -80,6 +93,7 @@ private fun Screen(
         TopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
             title = { Text(title) },
+            navigationIcon = { navIcon() },
             actions = { actions() },
         )
     }) {
