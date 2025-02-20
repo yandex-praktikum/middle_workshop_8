@@ -7,17 +7,31 @@ plugins {
 }
 
 android {
-    namespace = "yandex.practicum.workshop.gradle"
+    namespace = "yandex.practicum.workshop.dagger"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "yandex.practicum.workshop.gradle"
+        applicationId = "yandex.practicum.workshop.dagger"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions += "type"
+    productFlavors {
+        create("teach") {
+            dimension = "type"
+        }
+        create("task") {
+            isDefault = true
+            dimension = "type"
+        }
+        create("result") {
+            dimension = "type"
+        }
     }
 
     buildTypes {

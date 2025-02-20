@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "yandex.practicum.conventionsample.bookstore"
+    namespace = "yandex.practicum.workshop.login"
     compileSdk = 35
 
     defaultConfig {
@@ -26,6 +26,20 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+
+    flavorDimensions += "type"
+    productFlavors {
+        create("teach") {
+            dimension = "type"
+        }
+        create("task") {
+            isDefault = true
+            dimension = "type"
+        }
+        create("result") {
+            dimension = "type"
+        }
     }
 }
 

@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Gradle Workshop"
+rootProject.name = "Dagger Workshop"
 include(":app")
 include(":core:analytics")
 include(":feature:list")
