@@ -7,7 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -18,18 +17,19 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import yandex.practicum.workshop.WorkshopApplication
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
             MaterialTheme {
                 AppNavHost()
@@ -42,37 +42,29 @@ class MainActivity : ComponentActivity() {
 private fun AppNavHost() {
     val navController = rememberNavController()
     val coroutineScope = rememberCoroutineScope()
+    val app = LocalContext.current.applicationContext as WorkshopApplication
 
-    NavHost(navController = navController, startDestination = Destinations.List.name) {
+    NavHost(navController = navController, startDestination = Destinations.Login.name) {
         composable(Destinations.Profile.name) {
-            Screen("Профиль",
-                navIcon = {
-                    IconButton(onClick = {
-                        coroutineScope.launch {
-                            navController.navigate(Destinations.List.name)
-                        }
-                    }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "")
+            Screen("Профиль", navIcon = {
+                IconButton(onClick = {
+                    coroutineScope.launch {
+                        navController.navigate(Destinations.Login.name)
                     }
+                }) {
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "")
                 }
-            ) {
-                ProfileScreen()
+            }) {
+                ProfileScreen(viewModel {
+                    app.appComponent.profileComponentFactory().create().getViewModel()
+                })
             }
         }
-        composable(Destinations.List.name) {
-            Screen(
-                "Элементы",
-                actions = {
-                    IconButton(onClick = {
-                        coroutineScope.launch {
-                            navController.navigate(Destinations.Profile.name)
-                        }
-                    }) {
-                        Icon(Icons.Filled.AccountCircle, contentDescription = "")
-                    }
-                }
-            ) {
-                ItemListScreen()
+        composable(Destinations.Login.name) {
+            Screen("Авторизация") {
+                LoginScreen(viewModel {
+                    app.appComponent.loginComponentFactory().create().getViewModel()
+                }, navController)
             }
         }
     }
@@ -101,5 +93,5 @@ private fun Screen(
 }
 
 enum class Destinations {
-    Profile, List
+    Profile, Login
 }

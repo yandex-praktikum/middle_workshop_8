@@ -5,16 +5,22 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
 
 
 @Composable
-fun ProfileScreen(viewModel: ProfileViewModel = hiltViewModel()) {
+//fun ProfileScreen(viewModel: ProfileViewModel = hiltViewModel()) {
+fun ProfileScreen(
+    viewModel: ProfileViewModel
+) {
+    val user by viewModel.user.collectAsState()
+
     Box(Modifier.fillMaxSize()) {
         Text(
-            text = "Привет, пользователь!",
+            text = "Привет, ${user?.name}!",
             modifier = Modifier.align(Alignment.Center),
             style = MaterialTheme.typography.headlineMedium
         )

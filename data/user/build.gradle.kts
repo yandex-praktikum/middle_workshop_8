@@ -14,6 +14,7 @@ kotlin {
 
 dependencies {
     implementation(libs.javax.inject)
+    implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.dagger)
     ksp(libs.google.dagger.compiler)
