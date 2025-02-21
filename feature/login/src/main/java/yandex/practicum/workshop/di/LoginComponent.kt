@@ -4,7 +4,7 @@ import dagger.Subcomponent
 import yandex.practicum.workshop.ui.LoginViewModel
 
 @LoginScope
-@Subcomponent(modules = [LoginModule::class, UserModule::class])
+@Subcomponent(modules = [LoginModule::class])
 interface LoginComponent {
 
     @Subcomponent.Factory

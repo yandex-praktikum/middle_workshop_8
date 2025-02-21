@@ -27,20 +27,6 @@ android {
     buildFeatures {
         compose = true
     }
-
-    flavorDimensions += "type"
-    productFlavors {
-        create("teach") {
-            dimension = "type"
-        }
-        create("task") {
-            isDefault = true
-            dimension = "type"
-        }
-        create("result") {
-            dimension = "type"
-        }
-    }
 }
 
 dependencies {

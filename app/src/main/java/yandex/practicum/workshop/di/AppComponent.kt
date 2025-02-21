@@ -10,12 +10,12 @@ import javax.inject.Singleton
 
 
 @Module(
-    subcomponents = [ProfileComponent::class, LoginComponent::class]
+    subcomponents = [ProfileComponent::class]
 )
 @DisableInstallInCheck
 object SubcomponentsModule
 
-@Component(modules = [SubcomponentsModule::class, AnalyticsModule::class])
+@Component(modules = [SubcomponentsModule::class, AnalyticsModule::class, UserModule::class])
 @Singleton
 interface AppComponent {
     @Component.Factory
@@ -24,5 +24,4 @@ interface AppComponent {
     }
 
     fun profileComponentFactory(): ProfileComponent.Factory
-    fun loginComponentFactory(): LoginComponent.Factory
 }

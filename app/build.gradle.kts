@@ -20,20 +20,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    flavorDimensions += "type"
-    productFlavors {
-        create("teach") {
-            dimension = "type"
-        }
-        create("task") {
-            isDefault = true
-            dimension = "type"
-        }
-        create("result") {
-            dimension = "type"
-        }
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -80,8 +66,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(libs.dagger)
-    ksp(libs.google.dagger.compiler)
+//    implementation(libs.dagger)
+//    ksp(libs.google.dagger.compiler)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 }

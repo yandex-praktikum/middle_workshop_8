@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 
 
 @Composable
-//fun ProfileScreen(viewModel: ProfileViewModel = hiltViewModel()) {
 fun ProfileScreen(
     viewModel: ProfileViewModel
 ) {

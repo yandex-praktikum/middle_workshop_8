@@ -10,7 +10,6 @@ import yandex.practicum.workshop.domain.GetUserUseCase
 import yandex.practicum.workshop.user.AnalyticsManager
 import javax.inject.Inject
 
-//@HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val getUserUseCase: GetUserUseCase,
     analyticsManager: AnalyticsManager

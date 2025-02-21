@@ -4,7 +4,7 @@ import dagger.Subcomponent
 import yandex.practicum.workshop.ui.ProfileViewModel
 
 @ProfileScope
-@Subcomponent(modules = [ProfileModule::class, UserModule::class])
+@Subcomponent(modules = [ProfileModule::class])
 interface ProfileComponent {
 
     @Subcomponent.Factory

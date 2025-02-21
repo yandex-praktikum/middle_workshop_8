@@ -22,10 +22,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import yandex.practicum.workshop.WorkshopApplication
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,9 +63,7 @@ private fun AppNavHost() {
         }
         composable(Destinations.Login.name) {
             Screen("Авторизация") {
-                LoginScreen(viewModel {
-                    app.appComponent.loginComponentFactory().create().getViewModel()
-                }, navController)
+                LoginScreen(navController = navController)
             }
         }
     }
