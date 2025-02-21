@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
 }
 
@@ -32,10 +33,10 @@ dependencies {
     implementation(project(":core:userprefs"))
     implementation(project(":data:user"))
 
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.material3)
 
-    implementation(libs.dagger)
-    implementation(libs.androidx.lifecycle.viewmodel.android)
-    ksp(libs.google.dagger.compiler)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }

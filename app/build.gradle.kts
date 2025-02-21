@@ -45,7 +45,6 @@ dependencies {
     implementation(project(":core:userprefs"))
     implementation(project(":data:user"))
     implementation(project(":feature:login"))
-
     implementation(project(":feature:profile"))
 
     implementation(libs.androidx.hilt.navigation.compose)

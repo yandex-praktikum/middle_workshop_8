@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.ksp)
 }
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -14,7 +13,4 @@ kotlin {
 
 dependencies {
     implementation(libs.javax.inject)
-
-    implementation(libs.dagger)
-    ksp(libs.google.dagger.compiler)
 }

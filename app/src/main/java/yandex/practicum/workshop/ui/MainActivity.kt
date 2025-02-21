@@ -43,7 +43,6 @@ class MainActivity : ComponentActivity() {
 private fun AppNavHost() {
     val navController = rememberNavController()
     val coroutineScope = rememberCoroutineScope()
-    val app = LocalContext.current.applicationContext as WorkshopApplication
 
     NavHost(navController = navController, startDestination = Destinations.Login.name) {
         composable(Destinations.Profile.name) {
@@ -56,9 +55,7 @@ private fun AppNavHost() {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "")
                 }
             }) {
-                ProfileScreen(viewModel {
-                    app.appComponent.profileComponentFactory().create().getViewModel()
-                })
+                ProfileScreen()
             }
         }
         composable(Destinations.Login.name) {
