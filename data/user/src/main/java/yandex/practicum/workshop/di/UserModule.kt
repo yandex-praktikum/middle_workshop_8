@@ -7,11 +7,9 @@ import yandex.practicum.workshop.data.UserRepositoryImpl
 import javax.inject.Singleton
 
 @Module
-//@InstallIn(ViewModelComponent::class)
 abstract class UserModule {
 
     @Binds
-//    @ViewModelScoped
     @Singleton
     abstract fun bindRepository(repositoryImpl: UserRepositoryImpl): UserRepository
 }

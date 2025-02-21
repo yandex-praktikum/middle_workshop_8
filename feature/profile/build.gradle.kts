@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:analytics"))
+    implementation(project(":core:userprefs"))
     implementation(project(":data:user"))
 
     implementation(platform(libs.androidx.compose.bom))

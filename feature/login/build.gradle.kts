@@ -30,7 +30,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:analytics"))
     implementation(project(":data:user"))
 
     implementation(libs.androidx.hilt.navigation.compose)

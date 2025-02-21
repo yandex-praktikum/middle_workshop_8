@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Dagger Workshop"
 include(":app")
-include(":core:analytics")
+include(":core:userprefs")
 include(":data:user")
 include(":feature:login")
 include(":feature:profile")

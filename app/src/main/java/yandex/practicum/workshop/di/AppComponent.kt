@@ -5,7 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.hilt.migration.DisableInstallInCheck
-import yandex.practicum.workshop.user.di.AnalyticsModule
+import yandex.practicum.workshop.data.UserRepository
 import javax.inject.Singleton
 
 
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @DisableInstallInCheck
 object SubcomponentsModule
 
-@Component(modules = [SubcomponentsModule::class, AnalyticsModule::class, UserModule::class])
+@Component(modules = [SubcomponentsModule::class, UserPrefsModule::class, UserModule::class])
 @Singleton
 interface AppComponent {
     @Component.Factory
@@ -24,4 +24,5 @@ interface AppComponent {
     }
 
     fun profileComponentFactory(): ProfileComponent.Factory
+    fun userRepository(): UserRepository
 }
