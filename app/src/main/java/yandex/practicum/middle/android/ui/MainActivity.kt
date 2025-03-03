@@ -33,8 +33,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val url =
-            "https://promodj.com/download/7614020/THE%20MATRIX%20-%20Welcome%20To%20The%20Future%20%28Extended%20mix%29%20%28promodj.com%29.mp3"
+        val url = "asset:/audio.mp3"
         setContent {
             MaterialTheme {
                 val player = mediaController.value
