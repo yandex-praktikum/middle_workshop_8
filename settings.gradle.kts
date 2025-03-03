@@ -19,9 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Dagger Workshop"
+rootProject.name = "Lesson Media"
 include(":app")
-include(":core:userprefs")
-include(":data:user")
-include(":feature:login")
-include(":feature:profile")

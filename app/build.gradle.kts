@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "yandex.practicum.workshop.dagger"
+    namespace = "yandex.practicum.middle.android"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "yandex.practicum.workshop.dagger"
+        applicationId = "yandex.practicum.middle.android.media"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -42,28 +42,21 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:userprefs"))
-    implementation(project(":data:user"))
-    implementation(project(":feature:login"))
-    implementation(project(":feature:profile"))
-
     implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.session)
+
+    implementation(libs.androidx.media3.exoplayer.hls)
+//    implementation(libs.androidx.navigation.compose)
+//    implementation(libs.androidx.core.ktx)
+//    implementation(libs.androidx.lifecycle.runtime.ktx)
+//    implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
+//    implementation(libs.androidx.ui)
+//    implementation(libs.androidx.ui.graphics)
+//    implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
