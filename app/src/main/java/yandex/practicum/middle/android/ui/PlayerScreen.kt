@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,12 +23,9 @@ import androidx.media3.ui.PlayerView
 import kotlinx.coroutines.launch
 
 @Composable
-fun PlayerScreen(player: Player, url: String) {
+fun PlayerScreen(player: Player, mediaItem: MediaItem) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
-    val mediaItem = remember(url) {
-        MediaItem.Builder().setUri(url).build()
-    }
 
     LaunchedEffect(mediaItem) {
         coroutineScope.launch {
