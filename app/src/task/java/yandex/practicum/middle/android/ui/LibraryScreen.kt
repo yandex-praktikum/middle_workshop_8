@@ -18,7 +18,6 @@ fun LibraryScreen(browser: MediaBrowser, navController: NavHostController) {
     val coroutineScope = rememberCoroutineScope()
     var items by remember { mutableStateOf<List<MediaItem>>(listOf()) }
 
-
     LaunchedEffect(browser) {
         coroutineScope.launch {
             val rootResult = browser.getLibraryRoot(null).await()
