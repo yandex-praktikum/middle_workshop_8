@@ -1,6 +1,8 @@
 package yandex.practicum.middle.android.ui
 
 import android.content.Intent
+import androidx.media3.common.AudioAttributes
+import androidx.media3.common.C
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.session.MediaSession
@@ -13,6 +15,11 @@ class PlaybackService : MediaSessionService() {
         super.onCreate()
 
         val player = ExoPlayer.Builder(this).build()
+        val audioAttributes = AudioAttributes.Builder()
+            .setUsage(C.USAGE_MEDIA)
+            .build()
+        player.setAudioAttributes(audioAttributes, true)
+
         mediaSession = MediaSession.Builder(this, player).build()
     }
 

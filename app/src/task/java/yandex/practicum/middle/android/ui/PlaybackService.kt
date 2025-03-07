@@ -1,6 +1,8 @@
 package yandex.practicum.middle.android.ui
 
 import android.content.Intent
+import androidx.media3.common.AudioAttributes
+import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.media3.common.util.UnstableApi
@@ -8,7 +10,6 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.session.LibraryResult
 import androidx.media3.session.MediaLibraryService
 import androidx.media3.session.MediaSession
-import com.google.common.collect.ImmutableList
 import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +27,10 @@ class PlaybackService : MediaLibraryService() {
         super.onCreate()
 
         val player = ExoPlayer.Builder(this).build()
+        val audioAttributes = AudioAttributes.Builder()
+            .setUsage(C.USAGE_MEDIA)
+            .build()
+        player.setAudioAttributes(audioAttributes, true)
 
         session = MediaLibrarySession.Builder(this, player, object : MediaLibrarySession.Callback {
             override fun onGetLibraryRoot(

@@ -1,6 +1,8 @@
 package yandex.practicum.middle.android.ui
 
 import android.content.Intent
+import androidx.media3.common.AudioAttributes
+import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.media3.common.util.UnstableApi
@@ -26,6 +28,10 @@ class PlaybackService : MediaLibraryService() {
         super.onCreate()
 
         val player = ExoPlayer.Builder(this).build()
+        val audioAttributes = AudioAttributes.Builder()
+            .setUsage(C.USAGE_MEDIA)
+            .build()
+        player.setAudioAttributes(audioAttributes, true)
 
         session = MediaLibrarySession.Builder(this, player, object : MediaLibrarySession.Callback {
             override fun onAddMediaItems(
