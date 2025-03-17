@@ -29,7 +29,7 @@ class MockServer @Inject constructor() {
                 BleGattPermission.PERMISSION_WRITE
             )
         ),
-        value = DataByteArray("value".toByteArray())
+        value = DataByteArray(byteArrayOf())
     )
 
     private val descriptor = MockBluetoothGattDescriptor(
@@ -41,7 +41,7 @@ class MockServer @Inject constructor() {
             )
         ),
         characteristic = characteristic,
-        value = DataByteArray("value".toByteArray())
+        value = DataByteArray(byteArrayOf())
     )
 
     private val service = MockBluetoothGattService(
