@@ -5,6 +5,5 @@ import javax.inject.Inject
 class MockServer @Inject constructor() {
 
     init {
-        TODO()
     }
 }

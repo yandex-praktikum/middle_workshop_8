@@ -37,7 +37,6 @@ class ServerViewModel @Inject constructor(
     val isAdvertisingState = _isAdvertisingState.asStateFlow()
 
     init {
-        TODO()
     }
 
     fun increaseCharacteristic() {
