@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.job
 import no.nordicsemi.android.kotlin.ble.advertiser.BleAdvertiser
-import no.nordicsemi.android.kotlin.ble.core.MockServerDevice
 import no.nordicsemi.android.kotlin.ble.core.advertiser.BleAdvertisingConfig
 import no.nordicsemi.android.kotlin.ble.core.advertiser.BleAdvertisingData
 import no.nordicsemi.android.kotlin.ble.core.data.util.DataByteArray
@@ -94,7 +93,7 @@ class ServerViewModel @Inject constructor(
             )
         )
         advertiser
-            .advertise(advertiserConfig, MockServerDevice())
+            .advertise(advertiserConfig, server.device)
             .launchIn(advertisingScope)
 
         _isAdvertisingState.value = true

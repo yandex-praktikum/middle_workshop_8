@@ -37,7 +37,7 @@ class MockServer @Inject constructor() {
         _characteristics = listOf(characteristic)
     )
 
-    private val device = MockServerDevice()
+    val device = MockServerDevice()
 
     val api = MockServerAPI(MockEngine, device, 100)
 

@@ -117,7 +117,7 @@ class ServerViewModel @Inject constructor(
             )
         )
         advertiser
-            .advertise(advertiserConfig, MockServerDevice())
+            .advertise(advertiserConfig, server.device)
             .launchIn(advertisingScope)
 
         _isAdvertisingState.value = true
