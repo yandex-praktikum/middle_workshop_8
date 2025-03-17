@@ -1,6 +1,5 @@
 package yandex.practicum.middle.android.ui
 
-import android.bluetooth.BluetoothGattService
 import android.content.Context
 import android.os.ParcelUuid
 import androidx.lifecycle.ViewModel
@@ -19,17 +18,11 @@ import no.nordicsemi.android.kotlin.ble.advertiser.BleAdvertiser
 import no.nordicsemi.android.kotlin.ble.core.MockServerDevice
 import no.nordicsemi.android.kotlin.ble.core.advertiser.BleAdvertisingConfig
 import no.nordicsemi.android.kotlin.ble.core.advertiser.BleAdvertisingData
-import no.nordicsemi.android.kotlin.ble.core.data.BleGattConsts
-import no.nordicsemi.android.kotlin.ble.core.data.BleGattPermission
-import no.nordicsemi.android.kotlin.ble.core.data.BleGattProperty
 import no.nordicsemi.android.kotlin.ble.core.data.util.DataByteArray
 import no.nordicsemi.android.kotlin.ble.core.data.util.IntFormat
-import no.nordicsemi.android.kotlin.ble.core.wrapper.MockBluetoothGattCharacteristic
-import no.nordicsemi.android.kotlin.ble.core.wrapper.MockBluetoothGattDescriptor
-import no.nordicsemi.android.kotlin.ble.core.wrapper.MockBluetoothGattService
 import no.nordicsemi.android.kotlin.ble.mock.MockEngine
 import no.nordicsemi.android.kotlin.ble.server.api.ServerGattEvent
-import no.nordicsemi.android.kotlin.ble.server.mock.MockServerAPI
+import yandex.practicum.middle.android.mock.MockServer
 import java.util.UUID
 import javax.inject.Inject
 
@@ -128,56 +121,5 @@ class ServerViewModel @Inject constructor(
             .launchIn(advertisingScope)
 
         _isAdvertisingState.value = true
-    }
-}
-
-class MockServer @Inject constructor() {
-    val characteristic = MockBluetoothGattCharacteristic(
-        uuid = UUID.randomUUID(),
-        properties = BleGattProperty.toInt(
-            listOf(
-                BleGattProperty.PROPERTY_READ,
-                BleGattProperty.PROPERTY_WRITE,
-                BleGattProperty.PROPERTY_WRITE_NO_RESPONSE,
-                BleGattProperty.PROPERTY_NOTIFY,
-            )
-        ),
-        permissions = BleGattPermission.toInt(
-            listOf(
-                BleGattPermission.PERMISSION_READ,
-                BleGattPermission.PERMISSION_WRITE
-            )
-        ),
-        value = DataByteArray("value".toByteArray())
-    )
-
-    val descriptor = MockBluetoothGattDescriptor(
-        uuid = BleGattConsts.NOTIFICATION_DESCRIPTOR,
-//                uuid = UUID.randomUUID(),
-        permissions = BleGattPermission.toInt(
-            listOf(
-                BleGattPermission.PERMISSION_READ,
-                BleGattPermission.PERMISSION_WRITE
-            )
-        ),
-        characteristic = characteristic,
-        value = DataByteArray("value".toByteArray())
-    )
-
-    val service = MockBluetoothGattService(
-        uuid = UUID.randomUUID(),
-        type = BluetoothGattService.SERVICE_TYPE_PRIMARY,
-        _characteristics = listOf(characteristic)
-    )
-
-    val device = MockServerDevice()
-
-    val api = MockServerAPI(MockEngine, device, 100)
-
-//    var clientDevice: ClientDevice = MockClientDevice()
-
-    init {
-        characteristic.addDescriptor(descriptor)
-        MockEngine.registerServer(api, device, listOf(service))
     }
 }
