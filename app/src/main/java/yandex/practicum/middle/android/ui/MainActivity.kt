@@ -23,10 +23,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         setContent {
             MaterialTheme {
-                Column(Modifier.fillMaxSize().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                     Spacer(Modifier.weight(1f))
                     ServerScreen()
                     Spacer(Modifier.weight(1f))
