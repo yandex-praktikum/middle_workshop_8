@@ -23,8 +23,6 @@ import kotlinx.coroutines.launch
 import no.nordicsemi.android.kotlin.ble.client.main.callback.ClientBleGatt
 import no.nordicsemi.android.kotlin.ble.client.main.service.ClientBleGattService
 import no.nordicsemi.android.kotlin.ble.core.ServerDevice
-import no.nordicsemi.android.kotlin.ble.core.data.BleWriteType
-import no.nordicsemi.android.kotlin.ble.core.data.util.DataByteArray
 import no.nordicsemi.android.kotlin.ble.core.data.util.IntFormat
 import no.nordicsemi.android.kotlin.ble.scanner.BleScanner
 import javax.inject.Inject

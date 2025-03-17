@@ -6,7 +6,6 @@ import no.nordicsemi.android.kotlin.ble.core.data.BleGattPermission
 import no.nordicsemi.android.kotlin.ble.core.data.BleGattProperty
 import no.nordicsemi.android.kotlin.ble.core.data.util.DataByteArray
 import no.nordicsemi.android.kotlin.ble.core.wrapper.MockBluetoothGattCharacteristic
-import no.nordicsemi.android.kotlin.ble.core.wrapper.MockBluetoothGattDescriptor
 import no.nordicsemi.android.kotlin.ble.core.wrapper.MockBluetoothGattService
 import no.nordicsemi.android.kotlin.ble.mock.MockEngine
 import no.nordicsemi.android.kotlin.ble.server.mock.MockServerAPI
