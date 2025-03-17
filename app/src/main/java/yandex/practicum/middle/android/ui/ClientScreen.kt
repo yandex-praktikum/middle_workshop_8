@@ -61,7 +61,7 @@ fun ClientScreen(viewModel: ClientViewModel = hiltViewModel()) {
             is ScanResult.ScannedDevice -> Text("Найден: ${result.device.name}")
         }
 
-        if (!DiscoverService(permissionsState, viewModel))
+        if (!discoverService(permissionsState, viewModel))
             return
 
         ReadCharacteristic(permissionsState, viewModel)
@@ -197,7 +197,7 @@ private fun ReadCharacteristic(
 @SuppressLint("MissingPermission")
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-private fun DiscoverService(
+private fun discoverService(
     permissionsState: MultiplePermissionsState,
     viewModel: ClientViewModel,
 ): Boolean {
