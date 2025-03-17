@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Workshop Media"
+rootProject.name = "Workshop Bluetooth"
 include(":app")
