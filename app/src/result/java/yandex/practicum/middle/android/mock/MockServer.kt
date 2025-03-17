@@ -20,7 +20,6 @@ class MockServer @Inject constructor() {
             listOf(
                 BleGattProperty.PROPERTY_READ,
                 BleGattProperty.PROPERTY_WRITE,
-                BleGattProperty.PROPERTY_WRITE_NO_RESPONSE,
             )
         ),
         permissions = BleGattPermission.toInt(

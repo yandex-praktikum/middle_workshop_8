@@ -23,7 +23,6 @@ import kotlinx.coroutines.launch
 import no.nordicsemi.android.kotlin.ble.client.main.callback.ClientBleGatt
 import no.nordicsemi.android.kotlin.ble.client.main.service.ClientBleGattService
 import no.nordicsemi.android.kotlin.ble.core.ServerDevice
-import no.nordicsemi.android.kotlin.ble.core.data.BleWriteType
 import no.nordicsemi.android.kotlin.ble.core.data.util.DataByteArray
 import no.nordicsemi.android.kotlin.ble.core.data.util.IntFormat
 import no.nordicsemi.android.kotlin.ble.scanner.BleScanner
@@ -113,7 +112,7 @@ class ClientViewModel @Inject constructor(
     @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)
     fun writeCharacteristic(value: Int) {
         viewModelScope.launch {
-            characteristic?.write(DataByteArray.from(value.toByte()), writeType = BleWriteType.NO_RESPONSE)
+            characteristic?.write(DataByteArray.from(value.toByte()))
         }
     }
     @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)
